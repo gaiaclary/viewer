@@ -7,7 +7,7 @@ include_guard()
 # USE_VELOPACK controls whether to use Velopack for installer packaging (instead of NSIS/DMG)
 option(USE_VELOPACK "Use Velopack for installer packaging" OFF)
 
-if (WINDOWS)
+if (USE_VELOPACK AND WINDOWS)
     include(Prebuilt)
     use_prebuilt_binary(velopack)
 
@@ -36,7 +36,7 @@ if (WINDOWS)
 
     target_compile_definitions(ll::velopack INTERFACE LL_VELOPACK=1)
 
-elseif (DARWIN)
+elseif (USE_VELOPACK AND DARWIN)
     include(Prebuilt)
     use_prebuilt_binary(velopack)
 
